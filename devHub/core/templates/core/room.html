@@ -5,8 +5,10 @@
     <div>
         {% for room in rooms %}
             <div>
+                <span>@{{room.host.username}}</sapn>
                 {{room.id}}.
                 <a href='{% url "home" room.id %}'>{{room.name}}</a>
+                
             </div>
         {% endfor %}
     </div>
