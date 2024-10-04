@@ -23,6 +23,10 @@ class Room(models.Model):
     def __str__(self):
         return self.name
     
+    #to place newly entered items on top
+    class Meta:
+        ordering = ['-updated', '-created']
+    
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)

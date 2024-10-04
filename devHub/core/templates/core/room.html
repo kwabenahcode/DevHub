@@ -3,13 +3,8 @@
 {% block content %}
     <h1>Room template </h1>
     <div>
-        {% for room in rooms %}
-            <div>
-                <span>@{{room.host.username}}</sapn>
-                {{room.id}}.
-                <a href='{% url "home" room.id %}'>{{room.name}}</a>
-                
-            </div>
-        {% endfor %}
+        <h1>{{room.topic}}</h1>
+        {{room.description}}
+        <br />
     </div>
 {% endblock %}
