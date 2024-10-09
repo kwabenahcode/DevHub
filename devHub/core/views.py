@@ -3,8 +3,10 @@ from .models import *
 from .forms import *
 
 def Home(request):
-    rooms = Room.objects.all()
-    context = {"rooms":rooms}
+    q = request.GET.get('q')
+    rooms = Room.objects.filter(topic__name=q)
+    topics = Topic.objects.all()
+    context = {"rooms":rooms, 'topics':topics}
     return render(request, 'core/home.html', context)
 
 def room(request, pk):
@@ -40,3 +42,10 @@ def deleteRoom(request, pk):
         return redirect('home')
     context= {"room":room}
     return render(request, 'core/delete.html', context)
+
+def topics(request):
+    topics = Topic.objects.all()
+    context = {'topics':topics}
+    return render(request, 'core/home.html', context)
+
+
