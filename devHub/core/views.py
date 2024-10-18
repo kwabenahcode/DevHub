@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 def loginPage(request):
-
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -21,9 +20,13 @@ def loginPage(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.error(request, "Username or password does not exist")
+            messages.error(request, "Username or password does not exist") 
     context = {}
     return render(request, 'core/login_register.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
 
 def Home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
