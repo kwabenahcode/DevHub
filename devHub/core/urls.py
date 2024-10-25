@@ -11,5 +11,6 @@ urlpatterns = [
     path('create-room/', createRoom, name='create-room'),
     path('update-room/<str:pk>', updateRoom, name='update-room'),
     path('delete-room/<str:pk>', deleteRoom, name='delete-room'),
+    path('delete-message/<str:pk>', deleteMessage, name='delete-message'),
     # path('topics/', topics, name='topics')
 ]
