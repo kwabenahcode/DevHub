@@ -1,3 +1,8 @@
-body{
-    background-color: aquamarine;
+/* body{
+    background-color: aquamarine !important;
+} */
+
+.imgage-img{
+    width: 100px;
+    height: 100px;
 }

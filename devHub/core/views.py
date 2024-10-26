@@ -15,7 +15,7 @@ def loginPage(request):
         password = request.POST.get('password')
         try:
             user = User.objects.get(username=username)
-        except:
+        except Exception:
             messages.error(request, "User does not exist")
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -87,12 +87,15 @@ def userProfile(request, pk):
     context={"user":user, "rooms":rooms, "room_messages":room_messages, "topics":topics}
     return render(request, 'core/profile.html', context)
 
+@login_required(login_url='login')
 def createRoom(request):
     form = RoomForm()
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
     context = {"form": form}
     return render(request, 'core/room_form.html', context)
