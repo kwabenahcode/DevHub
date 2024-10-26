@@ -12,42 +12,15 @@
 <div class='home-container'>
 
 <div>
-<h1>Browse Topics</h1>
-        <div>
-            <a href='{% url "home"%}'>ALL </a>
-        </div>
-    {%for topic in topics%}
-        <div>
-            <a href='{% url "home"%}?q={{topic.name}}'>{{topic}} </a>
-        </div>
-    {%endfor%}
+    {% include "core/topics_component.html"%}
 </div>
 
 <div>
-    <h5>{{room_count}} room(s) available</h5>
-    <span><a href="{%url 'create-room'%}">create Room</a></span>
-    {% for room in rooms %}
-        <div>
-            <small>@{{room.host}}</small>
-            <hr />
-            {{room.id}}__<a href='{% url "room" room.id %}'>{{room.name}}</a>
-
-            <a href="{% url 'update-room' room.id%}">Edit</a>    
-            <a href="{% url 'delete-room' room.id%}">Delete</a>   
-        </div>
-    {% endfor %}
+    {% include "core/feed_component.html"%}
 </div> 
 
 <div>
-    <h3>Recent Activity</h3>
-    <hr />
-    {% for message in room_messages%}
-        <div>
-            <small>{{message.user}} {{message.created | timesince}}</small>
-            <small>{{message.room}}</small>
-            <small>{{message.body}}</small>
-        </div>
-    {%endfor%}
+    {% include "core/activity_component.html" %}
 </div>
 </div>
     

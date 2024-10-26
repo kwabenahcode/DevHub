@@ -2,8 +2,7 @@
     <h2>logo</h2>
 </a>
 <form method="GET" action=' {% url "home" %}'>
-<input type='text' name='q' Placeholder='search Rooms...'/>
-
+    <input type='text' name='q' Placeholder='search Rooms...'/>
 </form>
 
 {% if request.user.is_authenticated%}
