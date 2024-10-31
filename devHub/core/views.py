@@ -141,6 +141,7 @@ def topics(request):
 @login_required(login_url='login')
 def deleteMessage(request, pk):
     message = Message.objects.get(id=pk)
+    user = request.user
     if request.user != message.user:
         return HttpResponse("You are not allowed here")
     if request.method == 'POST':
