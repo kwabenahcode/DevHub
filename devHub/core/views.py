@@ -162,4 +162,9 @@ def updateUser(request, pk):
     return render(request, 'core/update-user.html', context )
     
 
+def topicsPage(request, pk):
+    topics = Topic.objects.all()
+    context={"topics":topics}
+    return render(request, 'core/topics.html')
+
 
