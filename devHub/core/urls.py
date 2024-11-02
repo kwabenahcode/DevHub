@@ -14,4 +14,6 @@ urlpatterns = [
     path('delete-room/<str:pk>/', deleteRoom, name='delete-room'),
     path('delete-message/<str:pk>/', deleteMessage, name='delete-message'),
     path('update-user/<str:pk>/', updateUser, name='update-user'),
+    path('topics/', topicsPage, name='topics'),
+    
 ]
