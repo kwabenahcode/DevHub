@@ -15,5 +15,6 @@ urlpatterns = [
     path('delete-message/<str:pk>/', deleteMessage, name='delete-message'),
     path('update-user/<str:pk>/', updateUser, name='update-user'),
     path('topics/', topicsPage, name='topics'),
+    path('activity/', activityPage, name='activity'),
     
 ]

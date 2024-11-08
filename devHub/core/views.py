@@ -168,4 +168,9 @@ def topicsPage(request):
     context={"topics":topics}
     return render(request, 'core/topics.html', context)
 
+def activityPage(request):
+    room_messages = Message.objects.all()
+    context = {"room_messages":room_messages}
+    return render(request, 'core/activity.html', context)
+
 
